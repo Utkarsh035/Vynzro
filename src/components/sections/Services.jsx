@@ -3,6 +3,7 @@ import {
   HiOutlineDevicePhoneMobile,
   HiOutlinePaintBrush,
   HiOutlineLightBulb,
+  HiOutlineTableCells,
   HiOutlineVideoCamera,
 } from 'react-icons/hi2';
 import SectionHeader from '../ui/SectionHeader';
@@ -16,6 +17,7 @@ const iconMap = {
   HiOutlineDevicePhoneMobile: <HiOutlineDevicePhoneMobile />,
   HiOutlinePaintBrush: <HiOutlinePaintBrush />,
   HiOutlineLightBulb: <HiOutlineLightBulb />,
+  HiOutlineTableCells: <HiOutlineTableCells />,
   HiOutlineVideoCamera: <HiOutlineVideoCamera />,
 };
 

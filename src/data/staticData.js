@@ -47,6 +47,13 @@ export const services = [
   },
   {
     id: 5,
+    title: 'Excel Modeling',
+    description: 'Advanced spreadsheet models, dashboards, and financial planning tools that turn raw business data into clear decisions.',
+    icon: 'HiOutlineTableCells',
+    tags: ['Excel', 'Financial Modeling', 'Dashboards', 'Forecasting'],
+  },
+  {
+    id: 6,
     title: 'Graphic Design & Video Editing',
     description: 'Available as an add-on option contextually matched to your projects for cohesive branding, engaging marketing materials, and professional media.',
     icon: 'HiOutlineVideoCamera',
@@ -109,6 +116,7 @@ export const footerLinks = {
     { label: 'App Development', href: '/services' },
     { label: 'Web Design', href: '/services' },
     { label: 'IT Consultation', href: '/services' },
+    { label: 'Excel Modeling', href: '/services' },
   ],
   legal: [
     { label: 'Privacy Policy', href: '/privacy-policy' },

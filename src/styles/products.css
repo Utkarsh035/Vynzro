@@ -46,12 +46,60 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  overflow: hidden; /* Contain the speed lines */
+}
+
+/* Air cutting / Speed lines — Elegant & Parallel to Rocket */
+.product-card-image::before,
+.product-card-image::after {
+  content: '';
+  position: absolute;
+  width: 150px;
+  height: 1px; /* Thinner for premium feel */
+  background: linear-gradient(to left, transparent, rgba(37, 99, 235, 0.3), transparent);
+  transform: rotate(-45deg);
+  pointer-events: none;
+  animation: air-flow 1s linear infinite;
+}
+
+.product-card-image::before {
+  top: 10%;
+  right: -10%;
+}
+
+.product-card-image::after {
+  bottom: 10%;
+  left: -10%;
+  animation-delay: 0.5s;
+}
+
+@keyframes air-flow {
+  0% { 
+    transform: translate(150px, -150px) rotate(-45deg); 
+    opacity: 0; 
+  }
+  20% { opacity: 1; }
+  80% { opacity: 1; }
+  100% { 
+    transform: translate(-300px, 300px) rotate(-45deg); 
+    opacity: 0; 
+  }
 }
 
 .product-card-image-icon {
-  font-size: 4rem;
+  font-size: 5rem;
   color: var(--accent-indigo);
-  opacity: 0.3;
+  opacity: 0.4;
+  animation: rocket-fly 4s ease-in-out infinite;
+  filter: drop-shadow(0 0 20px rgba(37, 99, 235, 0.15));
+}
+
+@keyframes rocket-fly {
+  0% { transform: translate(0, 0) rotate(0deg); }
+  25% { transform: translate(5px, -15px) rotate(2deg); }
+  50% { transform: translate(-5px, -30px) rotate(-1deg); }
+  75% { transform: translate(3px, -15px) rotate(1deg); }
+  100% { transform: translate(0, 0) rotate(0deg); }
 }
 
 .product-badge {
