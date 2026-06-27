@@ -84,8 +84,13 @@ export default function Navbar() {
 
       {/* Mobile Card */}
       <div className={`mobile-nav-card ${mobileOpen ? 'open' : ''}`}>
+        <div className="mobile-nav-intro">
+          <span>V / MENU</span>
+          <p>Ideas shaped into<br />digital products.</p>
+          <small>IND · 2026</small>
+        </div>
         <div className="mobile-nav-card-links">
-          {navLinks.map((link) => (
+          {navLinks.map((link, index) => (
             <NavLink
               key={link.href}
               to={link.href}
@@ -93,15 +98,17 @@ export default function Navbar() {
               end={link.href === '/'}
               onClick={() => setMobileOpen(false)}
             >
-              {link.label}
+              <span className="mobile-nav-index">{String(index + 1).padStart(2, '0')}</span>
+              <span>{link.label}</span>
+              <span className="mobile-nav-arrow">↗</span>
             </NavLink>
           ))}
-        </div>
 
-        <div className="mobile-nav-card-footer">
-          <Link to="/contact" className="mobile-cta-btn" onClick={() => setMobileOpen(false)}>
-            Get Started
-          </Link>
+          <div className="mobile-nav-card-footer">
+            <Link to="/contact" className="mobile-cta-btn" onClick={() => setMobileOpen(false)}>
+              Start a project <span>→</span>
+            </Link>
+          </div>
         </div>
       </div>
     </motion.nav>

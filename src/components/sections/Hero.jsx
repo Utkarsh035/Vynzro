@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { motion, useSpring, useMotionValue } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { HiOutlineArrowRight, HiOutlineChatBubbleLeftRight } from 'react-icons/hi2';
@@ -6,9 +6,6 @@ import Magnetic from '../ui/Magnetic';
 import '../../styles/hero.css';
 
 export default function Hero() {
-  const mouseX = useMotionValue(0);
-  const mouseY = useMotionValue(0);
-
   const springConfig = { damping: 30, stiffness: 100 };
   const orb1X = useSpring(useMotionValue(0), springConfig);
   const orb1Y = useSpring(useMotionValue(0), springConfig);
@@ -29,7 +26,7 @@ export default function Hero() {
 
     window.addEventListener('mousemove', handleMouseMove);
     return () => window.removeEventListener('mousemove', handleMouseMove);
-  }, []);
+  }, [orb1X, orb1Y, orb2X, orb2Y]);
 
   return (
     <section className="hero" id="home">
@@ -48,30 +45,30 @@ export default function Hero() {
       <div className="hero-grid-bg" />
 
       {/* Content */}
+      <div className="hero-side-note" aria-hidden="true">
+        <span>V / 01</span>
+        <span className="hero-side-line" />
+        <span>Digital systems, thoughtfully made</span>
+      </div>
+
       <motion.div
         className="hero-content"
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.7, delay: 0.2, ease: [0.25, 0.46, 0.45, 0.94] }}
       >
-        <motion.div
-          className="hero-badge"
-          initial={{ opacity: 0, scale: 0.9 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.5, delay: 0.4 }}
-        >
-          <span className="hero-badge-dot" />
-          Innovation-Driven IT Company
-        </motion.div>
-
         <motion.h1
           className="hero-title"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.5 }}
         >
-          Building Tomorrow's{' '}
-          <span className="gradient-text">Technology</span>, Today
+          <span>Building tomorrow’s</span>
+          <span className="hero-title-shift">
+            <span className="gradient-text">technology</span>
+            <span className="hero-title-mark" aria-hidden="true">↗</span>
+          </span>
+          <span>today.</span>
         </motion.h1>
 
         <motion.p
@@ -102,6 +99,12 @@ export default function Hero() {
           </Magnetic>
         </motion.div>
       </motion.div>
+
+      <div className="hero-proof" aria-label="Vynzro focus">
+        <span>Strategy</span>
+        <span>Design</span>
+        <span>Engineering</span>
+      </div>
 
       <motion.div
         className="hero-scroll-indicator"
