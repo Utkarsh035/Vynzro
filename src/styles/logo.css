@@ -2,6 +2,10 @@
 .vynzro-brand-logo-img {
   display: inline-flex;
   align-items: center;
+  position: relative;
+  width: 122px;
+  height: 38px;
+  overflow: hidden;
   text-decoration: none;
   transition: opacity var(--transition-fast);
 }
@@ -11,19 +15,26 @@
 }
 
 .logo-img {
-  height: 40px;
-  width: auto;
-  object-fit: contain;
-  /* Removed border-radius and mix-blend-mode as we use a transparent SVG */
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 122px;
+  height: auto;
+  max-width: none;
+  transform: translateY(-47%);
 }
 
-/* In the dark footer, no need for special blend overrides on the new SVG */
 .vynzro-brand-logo-img.inverse .logo-img {
-  /* SVG handles transparency nicely */
+  filter: grayscale(1) brightness(0) invert(1);
 }
 
 @media (max-width: 768px) {
+  .vynzro-brand-logo-img {
+    width: 116px;
+    height: 36px;
+  }
+
   .logo-img {
-    height: 46px; /* Increased slightly for mobile */
+    width: 116px;
   }
 }

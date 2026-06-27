@@ -6,7 +6,7 @@ export const companyInfo = {
   description: 'We are a next-generation IT company delivering premium products and services that empower businesses to innovate, scale, and lead in the digital era.',
   founded: 2026,
   email: 'hello@vynzro.com',
-  phone: '+91 98XXX XXXXX',
+  phone: '+91 7459834938',
   address: 'India',
   social: {
     linkedin: 'https://linkedin.com/company/vynzro',

@@ -2,10 +2,6 @@ import { Link } from 'react-router-dom';
 import '../../styles/logo.css';
 
 export default function Logo({ inverse = false, className = '' }) {
-  // We only have one logo image right now, so we use it everywhere. 
-  // If the user uploads a white logo later, they can name it logo-white.png
-  const imageSrc = "/Vynzro/logo.svg";
-
   return (
     <Link
       to="/"
@@ -13,7 +9,7 @@ export default function Logo({ inverse = false, className = '' }) {
       aria-label="Vynzro Home"
     >
       <img
-        src={imageSrc}
+        src={`${import.meta.env.BASE_URL}vynzro-wordmark.png`}
         alt="Vynzro Logo"
         className="logo-img"
       />
