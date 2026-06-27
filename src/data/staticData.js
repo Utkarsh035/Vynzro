@@ -57,7 +57,7 @@ export const services = [
     title: 'Graphic Design & Video Editing',
     description: 'Available as an add-on option contextually matched to your projects for cohesive branding, engaging marketing materials, and professional media.',
     icon: 'HiOutlineVideoCamera',
-    tags: ['Photoshop', 'Premiere Pro', 'Figma'],
+    tags: ['Photoshop', 'Premiere Pro', 'Davinci' , 'Canva'],
   },
 ];
 

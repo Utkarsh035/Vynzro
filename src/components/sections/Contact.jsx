@@ -20,6 +20,7 @@ export default function Contact() {
     phone: '',
     service: '',
     message: '',
+    botcheck: '',
   });
   const [status, setStatus] = useState(null); // 'success' | 'error' | null
   const [loading, setLoading] = useState(false);
@@ -36,9 +37,11 @@ export default function Contact() {
     try {
       await submitContactForm(form);
       setStatus('success');
-      setForm({ name: '', email: '', phone: '', service: '', message: '' });
+      setForm({ name: '', email: '', phone: '', service: '', message: '', botcheck: '' });
     } catch (error) {
-      console.error('[Vynzro] Error submitting contact form:', error);
+      if (import.meta.env.DEV) {
+        console.error('[Vynzro] Error submitting contact form:', error);
+      }
       setStatus('error');
     } finally {
       setLoading(false);
@@ -53,6 +56,16 @@ export default function Contact() {
           {/* Form */}
           <ScrollReveal direction="left">
             <form className="contact-form" onSubmit={handleSubmit} id="contact-form">
+              <input
+                type="checkbox"
+                name="botcheck"
+                checked={Boolean(form.botcheck)}
+                onChange={handleChange}
+                tabIndex="-1"
+                autoComplete="off"
+                aria-hidden="true"
+                style={{ display: 'none' }}
+              />
               <div className="form-row">
                 <div className="form-group">
                   <label htmlFor="contact-name">Full Name</label>
@@ -63,6 +76,8 @@ export default function Contact() {
                     placeholder="Your Name"
                     value={form.name}
                     onChange={handleChange}
+                    maxLength={100}
+                    autoComplete="name"
                     required
                   />
                 </div>
@@ -75,6 +90,8 @@ export default function Contact() {
                     placeholder="your@email.com"
                     value={form.email}
                     onChange={handleChange}
+                    maxLength={254}
+                    autoComplete="email"
                     required
                   />
                 </div>
@@ -90,6 +107,8 @@ export default function Contact() {
                     placeholder="+91 98XXX XXXXX"
                     value={form.phone}
                     onChange={handleChange}
+                    maxLength={30}
+                    autoComplete="tel"
                   />
                 </div>
                 <div className="form-group">
@@ -117,6 +136,7 @@ export default function Contact() {
                   placeholder="Tell us about your project, goals, and timeline..."
                   value={form.message}
                   onChange={handleChange}
+                  maxLength={2000}
                   rows={5}
                   required
                 />

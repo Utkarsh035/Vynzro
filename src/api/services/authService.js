@@ -6,9 +6,6 @@ import ENDPOINTS from '../endpoints';
  */
 export const login = async (credentials) => {
   const response = await api.post(ENDPOINTS.AUTH_LOGIN, credentials);
-  if (response.data.token) {
-    localStorage.setItem('vynzro_auth_token', response.data.token);
-  }
   return response.data;
 };
 
@@ -17,10 +14,15 @@ export const register = async (userData) => {
   return response.data;
 };
 
-export const logout = () => {
-  localStorage.removeItem('vynzro_auth_token');
+export const logout = async () => {
+  await api.post(ENDPOINTS.AUTH_LOGOUT);
 };
 
-export const isAuthenticated = () => {
-  return !!localStorage.getItem('vynzro_auth_token');
+export const isAuthenticated = async () => {
+  try {
+    await api.get(ENDPOINTS.AUTH_SESSION);
+    return true;
+  } catch {
+    return false;
+  }
 };

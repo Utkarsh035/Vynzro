@@ -4,26 +4,17 @@ import axios from 'axios';
  * Axios instance configured for Spring Boot backend.
  * Base URL is read from environment variable VITE_API_BASE_URL.
  */
+const configuredBaseUrl = import.meta.env.VITE_API_BASE_URL;
+const baseURL = configuredBaseUrl || (import.meta.env.DEV ? 'http://localhost:8080/api' : undefined);
+
 const api = axios.create({
-  baseURL: import.meta.env.VITE_API_BASE_URL || 'http://localhost:8080/api',
+  baseURL,
   timeout: 15000,
+  withCredentials: true,
   headers: {
     'Content-Type': 'application/json',
   },
 });
-
-/* ---- Request Interceptor ---- */
-api.interceptors.request.use(
-  (config) => {
-    // Attach JWT token if available (future auth integration)
-    const token = localStorage.getItem('vynzro_auth_token');
-    if (token) {
-      config.headers.Authorization = `Bearer ${token}`;
-    }
-    return config;
-  },
-  (error) => Promise.reject(error)
-);
 
 /* ---- Response Interceptor ---- */
 api.interceptors.response.use(
@@ -32,12 +23,7 @@ api.interceptors.response.use(
     if (error.response) {
       const { status } = error.response;
       if (status === 401) {
-        // Handle unauthorized — clear token, redirect to login
-        localStorage.removeItem('vynzro_auth_token');
-        console.warn('[Vynzro API] Unauthorized — token cleared.');
-      }
-      if (status === 500) {
-        console.error('[Vynzro API] Server error:', error.response.data);
+        console.warn('[Vynzro API] Unauthorized request.');
       }
     } else if (error.request) {
       console.warn('[Vynzro API] No response — backend may be offline. Using static data.');
