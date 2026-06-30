@@ -117,6 +117,7 @@ export const footerLinks = {
     { label: 'Web Design', href: '/services' },
     { label: 'IT Consultation', href: '/services' },
     { label: 'Excel Modeling', href: '/services' },
+    { label: 'Graphic Design & Video Editing', href: '/services' },
   ],
   legal: [
     { label: 'Privacy Policy', href: '/privacy-policy' },
