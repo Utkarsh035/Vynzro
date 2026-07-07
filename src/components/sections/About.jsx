@@ -2,6 +2,7 @@ import { HiOutlineEye, HiOutlineRocketLaunch, HiOutlineHeart, HiOutlineStar } fr
 import SectionHeader from '../ui/SectionHeader';
 import ScrollReveal from '../ui/ScrollReveal';
 import SpotlightCard from '../ui/SpotlightCard';
+import Tilt3D from '../ui/Tilt3D';
 import '../../styles/about.css';
 
 const missionCards = [
@@ -58,11 +59,13 @@ export default function About() {
         <div className="about-mission-cards">
           {missionCards.map((card, index) => (
             <ScrollReveal key={index} delay={index * 0.1}>
-              <SpotlightCard className="mission-card">
-                <div className="mission-card-icon">{card.icon}</div>
-                <h3>{card.title}</h3>
-                <p>{card.description}</p>
-              </SpotlightCard>
+              <Tilt3D intensity={4} scale={1.01}>
+                <SpotlightCard className="mission-card">
+                  <div className="mission-card-icon">{card.icon}</div>
+                  <h3>{card.title}</h3>
+                  <p>{card.description}</p>
+                </SpotlightCard>
+              </Tilt3D>
             </ScrollReveal>
           ))}
         </div>

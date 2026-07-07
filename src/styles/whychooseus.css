@@ -62,9 +62,13 @@
 
 .why-feature-card:hover {
   background: rgba(255, 255, 255, 0.08);
-  transform: translateY(-4px);
+  transform: perspective(800px) translateY(-4px) translateZ(6px);
   border-color: rgba(37, 99, 235, 0.25);
-  box-shadow: 0 8px 32px rgba(37, 99, 235, 0.12);
+  box-shadow:
+    0 4px 8px rgba(37, 99, 235, 0.08),
+    0 8px 16px rgba(37, 99, 235, 0.08),
+    0 16px 32px rgba(37, 99, 235, 0.06),
+    0 24px 48px rgba(0, 0, 0, 0.12);
 }
 
 .why-feature-icon {
@@ -82,8 +86,11 @@
 }
 
 .why-feature-card:hover .why-feature-icon {
-  transform: scale(1.08);
+  transform: perspective(400px) scale(1.08) rotateX(-8deg) translateZ(3px);
   background: linear-gradient(135deg, rgba(37, 99, 235, 0.3), rgba(124, 58, 237, 0.2));
+  box-shadow:
+    0 4px 8px rgba(37, 99, 235, 0.2),
+    inset 0 1px 0 rgba(255,255,255,0.1);
 }
 
 .why-feature-card h3 {

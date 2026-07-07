@@ -17,13 +17,21 @@
   border-radius: var(--radius-3xl);
   text-align: center;
   border: 1px solid rgba(37, 99, 235, 0.08);
-  box-shadow: 0 8px 48px rgba(37, 99, 235, 0.06);
-  transition: all var(--transition-base);
+  box-shadow:
+    0 2px 4px rgba(37, 99, 235, 0.04),
+    0 4px 8px rgba(37, 99, 235, 0.04),
+    0 8px 16px rgba(37, 99, 235, 0.03),
+    0 16px 32px rgba(37, 99, 235, 0.02);
+  transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
 }
 
 .cta-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 16px 64px rgba(37, 99, 235, 0.12);
+  transform: perspective(800px) translateY(-4px) translateZ(6px);
+  box-shadow:
+    0 4px 8px rgba(37, 99, 235, 0.06),
+    0 8px 16px rgba(37, 99, 235, 0.08),
+    0 16px 32px rgba(37, 99, 235, 0.06),
+    0 32px 64px rgba(37, 99, 235, 0.04);
 }
 
 .cta-card-emoji {

@@ -10,6 +10,7 @@ import SectionHeader from '../ui/SectionHeader';
 import ScrollReveal from '../ui/ScrollReveal';
 import { services } from '../../data/staticData';
 import SpotlightCard from '../ui/SpotlightCard';
+import Tilt3D from '../ui/Tilt3D';
 import '../../styles/services.css';
 
 const iconMap = {
@@ -34,18 +35,20 @@ export default function Services() {
         <div className="services-grid">
           {services.map((service, index) => (
             <ScrollReveal key={service.id} delay={index * 0.08}>
-              <SpotlightCard className="service-card">
-                <div className="service-icon">
-                  {iconMap[service.icon]}
-                </div>
-                <h3>{service.title}</h3>
-                <p>{service.description}</p>
-                <div className="service-card-tags">
-                  {service.tags.map((tag) => (
-                    <span className="service-tag" key={tag}>{tag}</span>
-                  ))}
-                </div>
-              </SpotlightCard>
+              <Tilt3D intensity={4} scale={1.01}>
+                <SpotlightCard className="service-card">
+                  <div className="service-icon">
+                    {iconMap[service.icon]}
+                  </div>
+                  <h3>{service.title}</h3>
+                  <p>{service.description}</p>
+                  <div className="service-card-tags">
+                    {service.tags.map((tag) => (
+                      <span className="service-tag" key={tag}>{tag}</span>
+                    ))}
+                  </div>
+                </SpotlightCard>
+              </Tilt3D>
             </ScrollReveal>
           ))}
         </div>

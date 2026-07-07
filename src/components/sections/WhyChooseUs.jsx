@@ -7,6 +7,7 @@ import {
 import SectionHeader from '../ui/SectionHeader';
 import ScrollReveal from '../ui/ScrollReveal';
 import SpotlightCard from '../ui/SpotlightCard';
+import Tilt3D from '../ui/Tilt3D';
 import { whyChooseUs } from '../../data/staticData';
 import '../../styles/whychooseus.css';
 
@@ -31,13 +32,15 @@ export default function WhyChooseUs() {
         <div className="why-features-grid">
           {whyChooseUs.map((feature, index) => (
             <ScrollReveal key={index} delay={index * 0.1}>
-              <SpotlightCard className="why-feature-card">
-                <div className="why-feature-icon">
-                  {iconMap[feature.icon]}
-                </div>
-                <h3>{feature.title}</h3>
-                <p>{feature.description}</p>
-              </SpotlightCard>
+              <Tilt3D intensity={5} scale={1.01}>
+                <SpotlightCard className="why-feature-card">
+                  <div className="why-feature-icon">
+                    {iconMap[feature.icon]}
+                  </div>
+                  <h3>{feature.title}</h3>
+                  <p>{feature.description}</p>
+                </SpotlightCard>
+              </Tilt3D>
             </ScrollReveal>
           ))}
         </div>
